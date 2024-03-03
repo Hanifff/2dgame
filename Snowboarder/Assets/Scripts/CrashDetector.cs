@@ -8,12 +8,17 @@ using UnityEngine.SceneManagement;
 public class CrashDetector : MonoBehaviour
 {
     [SerializeField] float InvokeDelay = 0.5f;
-    [SerializeField] ParticleSystem FinishEffect;
+    [SerializeField] ParticleSystem crashEffact;
+    [SerializeField] AudioClip crashSFX;
+    bool hasCrashed = false;
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Ground"))
+        if (other.CompareTag("Ground") && !hasCrashed)
         {
-            FinishEffect.Play();
+            hasCrashed = true;
+            FindObjectOfType<PlayerController>().DisableControls();
+            crashEffact.Play();
+            GetComponent<AudioSource>().PlayOneShot(crashSFX);
             Invoke("ReloadScene", InvokeDelay); // Delays the action
         }
     }
