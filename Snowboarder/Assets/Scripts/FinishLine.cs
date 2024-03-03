@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 public class FinishLine : MonoBehaviour
 {
     [SerializeField] float InvokeDelay = 2f;
+    [SerializeField] ParticleSystem FinishEffect;
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
+            FinishEffect.Play();
             Invoke("ReloadScene", InvokeDelay); // Delays the action
         }
     }
