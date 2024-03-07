@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   question: Enter new question text here?
   answers:
-  - 
-  - 
-  - 
-  - 
-  corrrectAanswerIdx: 0
+  - wqe
+  - wqe
+  - 2131
+  - r32e
+  corrrectAanswerIdx: 2

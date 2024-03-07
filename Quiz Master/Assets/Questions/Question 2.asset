@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   question: What is you name?
   answers:
-  - 
-  - 
-  - 
-  - 
-  corrrectAanswerIdx: 0
+  - mma
+  - ooks
+  - dsad
+  - ewqeq
+  corrrectAanswerIdx: 2
