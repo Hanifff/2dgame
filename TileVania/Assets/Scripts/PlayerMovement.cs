@@ -17,33 +17,50 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] float climbSpeed = 5f;
 
-    CapsuleCollider2D capsuleCollider2D;
+    CapsuleCollider2D bodyCollider2D;
+    BoxCollider2D feetCollider2D;
 
+    [SerializeField] Vector2 deathKick = new Vector2(10f, 10f);
+    bool isAlive = true;
     float gravityScaleAtStart;
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        capsuleCollider2D = GetComponent<CapsuleCollider2D>();
+        bodyCollider2D = GetComponent<CapsuleCollider2D>();
+        //feetCollider2D = GetComponent<BoxCollider2D>();
         gravityScaleAtStart = rigidbody2D.gravityScale;
     }
 
     void Update()
     {
+        if (!isAlive)
+        {
+            return;
+        }
         Run();
         FlipSprite();
         ClimbLadder();
+        Die();
     }
 
     void OnMove(InputValue inputValue)
     {
+        if (!isAlive)
+        {
+            return;
+        }
         moveInput = inputValue.Get<Vector2>();
         Debug.Log(moveInput);
     }
 
     void OnJump(InputValue inputValue)
     {
-        if (!capsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        if (!isAlive)
+        {
+            return;
+        }
+        if (!bodyCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             return;
         }
@@ -73,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
 
     void ClimbLadder()
     {
-        if (!capsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("Climbing")))
+        if (!bodyCollider2D.IsTouchingLayers(LayerMask.GetMask("Climbing")))
         {
             rigidbody2D.gravityScale = gravityScaleAtStart;
             animator.SetBool("isClimbing", false);
@@ -86,5 +103,15 @@ public class PlayerMovement : MonoBehaviour
 
         bool playerVerticalSpeed = Mathf.Abs(rigidbody2D.velocity.y) > Mathf.Epsilon;
         animator.SetBool("isClimbing", playerVerticalSpeed);
+    }
+
+    void Die()
+    {
+        if (rigidbody2D.IsTouchingLayers(LayerMask.GetMask("Enemies")))
+        {
+            isAlive = false;
+            animator.SetTrigger("Dying");
+            rigidbody2D.velocity = deathKick;
+        }
     }
 }
