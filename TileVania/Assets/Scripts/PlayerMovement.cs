@@ -23,6 +23,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Vector2 deathKick = new Vector2(10f, 10f);
     bool isAlive = true;
     float gravityScaleAtStart;
+
+
+    [SerializeField] GameObject bullet;
+    [SerializeField] Transform gun;
+
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -107,11 +112,20 @@ public class PlayerMovement : MonoBehaviour
 
     void Die()
     {
-        if (rigidbody2D.IsTouchingLayers(LayerMask.GetMask("Enemies")))
+        if (rigidbody2D.IsTouchingLayers(LayerMask.GetMask("Enemies", "Hazards")))
         {
             isAlive = false;
             animator.SetTrigger("Dying");
             rigidbody2D.velocity = deathKick;
         }
+    }
+
+    void OnFire(InputValue inputValue)
+    {
+        if (!isAlive)
+        {
+            return;
+        }
+        Instantiate(bullet, gun.position, transform.rotation);
     }
 }
