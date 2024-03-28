@@ -157,6 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinAudio: {fileID: 8300000, guid: 2304d665b731226479655cb58c999d0e, type: 3}
+  pointsForCoinPicup: 100
 --- !u!82 &-1681039190937425811
 AudioSource:
   m_ObjectHideFlags: 0
@@ -169,7 +170,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
