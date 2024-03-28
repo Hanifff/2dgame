@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 2046703134258299410}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.205, y: -0.204, z: 0}
+  m_LocalPosition: {x: 0.4, y: -0.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 8547340366212812284}
   m_Layer: 8
   m_Name: Ginja
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,7 +129,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -621705729
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 909347520, guid: 9d74618e385864947bded876d5e8158f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -174,8 +174,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03583908, y: -0.09135556}
-  m_Size: {x: 0.5547638, y: 0.9147301}
+  m_Offset: {x: -0.047719, y: -0.08169925}
+  m_Size: {x: 0.61689186, y: 0.91043687}
   m_Direction: 0
 --- !u!50 &8873128210566010756
 Rigidbody2D:
@@ -249,4 +249,6 @@ MonoBehaviour:
   runSpeed: 7
   jumpSpeed: 20
   climbSpeed: 5
-  deathKick: {x: 10, y: 10}
+  deathKick: {x: 20, y: 20}
+  bullet: {fileID: 4645553159685160177, guid: a5dbea5f193d0d04dadfbf0cd300fdd2, type: 3}
+  gun: {fileID: 1476846912444100924}

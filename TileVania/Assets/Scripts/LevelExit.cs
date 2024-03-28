@@ -1,0 +1,29 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class LevelExit : MonoBehaviour
+{
+    [SerializeField] float levelLoadDelay = 1f;
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            StartCoroutine(LoadNextLevel());
+        }
+    }
+
+    IEnumerator LoadNextLevel()
+    {
+        yield return new WaitForSecondsRealtime(levelLoadDelay);
+        int currentSceneIdx = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIdx = currentSceneIdx + 1;
+        Debug.Log("nex scene idx: " + nextSceneIdx);
+        if (nextSceneIdx == SceneManager.sceneCountInBuildSettings)
+        {
+            nextSceneIdx = 0;
+        }
+        SceneManager.LoadScene(nextSceneIdx);
+    }
+}
