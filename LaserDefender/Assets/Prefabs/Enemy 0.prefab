@@ -25,13 +25,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1234745511187977494}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6499293147464412765}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!212 &8752037337580250891
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 3137767105832885457}
   - component: {fileID: 6438057141101479835}
   - component: {fileID: 8168786182782205400}
+  - component: {fileID: 3722193978539841199}
   m_Layer: 7
   m_Name: Enemy 0
   m_TagString: Untagged
@@ -208,6 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
+  hitEeffect: {fileID: 8475619787064805737, guid: 9b9982a0e16170941b10b059991b6151, type: 3}
 --- !u!114 &8168786182782205400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,3 +223,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damege: 25
+--- !u!114 &3722193978539841199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7116904781217592932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2349e9a84c2e2724695cdc301d74af2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilPrefab: {fileID: 7213034095394534549, guid: bb8995e25655782489c8edce9ab95149, type: 3}
+  projectilSpeed: 10
+  projectilLifeTime: 5
+  baseFiringRate: 1
+  firingRateVariance: 0.5
+  minFiringRate: 0.1
+  useAI: 1
+  IsFiring: 0
