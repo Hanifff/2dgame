@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements.Experimental;
 public class Player : MonoBehaviour
 {
     Vector2 rawInput;
@@ -13,6 +15,12 @@ public class Player : MonoBehaviour
     Vector2 minBounds;
     Vector2 maxBounds;
 
+    Shooter shooter;
+
+    void Awake()
+    {
+        shooter = FindObjectOfType<Shooter>();
+    }
     void Start()
     {
         InitBounds();
@@ -42,6 +50,13 @@ public class Player : MonoBehaviour
     void OnMove(InputValue inputValue)
     {
         rawInput = inputValue.Get<Vector2>();
+    }
 
+    void OnFire(InputValue inputValue)
+    {
+        if (shooter != null)
+        {
+            shooter.IsFiring = inputValue.isPressed;
+        }
     }
 }
