@@ -23,7 +23,7 @@ public class CameraShake : MonoBehaviour
         float elapsedTime = 0;
 
 
-        while (elapsedTime < shakeDuration) ;
+        while (elapsedTime < shakeDuration)
         {
             transform.position = initialPosition + (Vector3)Random.insideUnitCircle * shakeMagnetude;
             elapsedTime += Time.deltaTime;
